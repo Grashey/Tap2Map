@@ -13,9 +13,11 @@
 		B6C3608424FFA81F00E31503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C3608224FFA81F00E31503 /* Main.storyboard */; };
 		B6C3608624FFA82000E31503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C3608524FFA82000E31503 /* Assets.xcassets */; };
 		B6C3608924FFA82000E31503 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C3608724FFA82000E31503 /* LaunchScreen.storyboard */; };
+		F5818481FFE2E9B2C174828A /* Pods_Tap2Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5AFFB397A959010710876F /* Pods_Tap2Map.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A5AFFB397A959010710876F /* Pods_Tap2Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap2Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607924FFA81F00E31503 /* Tap2Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tap2Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607C24FFA81F00E31503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		B6C3608524FFA82000E31503 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6C3608824FFA82000E31503 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6C3608A24FFA82000E31503 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD77B27081B01AA3248C3AE4 /* Pods-Tap2Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap2Map.release.xcconfig"; path = "Target Support Files/Pods-Tap2Map/Pods-Tap2Map.release.xcconfig"; sourceTree = "<group>"; };
+		D08FBCE0D85A176D6124EF28 /* Pods-Tap2Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap2Map.debug.xcconfig"; path = "Target Support Files/Pods-Tap2Map/Pods-Tap2Map.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5818481FFE2E9B2C174828A /* Pods_Tap2Map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		523F75352B1B0CF355F05ECD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A5AFFB397A959010710876F /* Pods_Tap2Map.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		556831381A428A923A2C1291 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D08FBCE0D85A176D6124EF28 /* Pods-Tap2Map.debug.xcconfig */,
+				BD77B27081B01AA3248C3AE4 /* Pods-Tap2Map.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B6C3607024FFA81F00E31503 = {
 			isa = PBXGroup;
 			children = (
 				B6C3607B24FFA81F00E31503 /* Tap2Map */,
 				B6C3607A24FFA81F00E31503 /* Products */,
+				556831381A428A923A2C1291 /* Pods */,
+				523F75352B1B0CF355F05ECD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6C3608D24FFA82000E31503 /* Build configuration list for PBXNativeTarget "Tap2Map" */;
 			buildPhases = (
+				08534F4BAFAD0A9008A1FC07 /* [CP] Check Pods Manifest.lock */,
 				B6C3607524FFA81F00E31503 /* Sources */,
 				B6C3607624FFA81F00E31503 /* Frameworks */,
 				B6C3607724FFA81F00E31503 /* Resources */,
+				190EA06C2A72B5B55BFF1137 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08534F4BAFAD0A9008A1FC07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tap2Map-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		190EA06C2A72B5B55BFF1137 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B6C3607524FFA81F00E31503 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		B6C3608E24FFA82000E31503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D08FBCE0D85A176D6124EF28 /* Pods-Tap2Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		B6C3608F24FFA82000E31503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD77B27081B01AA3248C3AE4 /* Pods-Tap2Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
