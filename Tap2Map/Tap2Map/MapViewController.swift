@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import Realm
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
@@ -17,6 +18,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     var locationManager: CLLocationManager?
     let geocoder = CLGeocoder()
+    var route: GMSPolyline?
+    var routePath: GMSMutablePath?
+    var isTracking = false
     
     @IBOutlet weak var mapView: GMSMapView!
 
@@ -34,34 +38,55 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func configureLocationManager() {
         locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
         locationManager?.delegate = self
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.requestAlwaysAuthorization()
     }
     
-    @IBAction func updateLocation(_ sender: Any) {
-        locationManager?.startUpdatingLocation()
+    @IBAction func updateLocation(_ sender: UIBarButtonItem) {
+        if !isTracking {
+            startTracking(sender: sender)
+            locationManager?.startMonitoringSignificantLocationChanges()
+        } else {
+            stopTracking(sender: sender)
+            locationManager?.stopMonitoringSignificantLocationChanges()
+        }
+        
     }
     
-    @IBAction func currentLocation(_ sender: Any) {
+    @IBAction func currentLocation(_ sender: UIBarButtonItem) {
         locationManager?.requestLocation()
     }
     
-    func addMarker(with coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.map = mapView
+    func startTracking(sender: UIBarButtonItem) {
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        locationManager?.startUpdatingLocation()
+        sender.title = "Stop Tracking"
+        isTracking = true
     }
+    
+    func stopTracking(sender: UIBarButtonItem) {
+        locationManager?.stopUpdatingLocation()
+        sender.title = "Start Tracking"
+        isTracking = false
+    }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         geocoder.reverseGeocodeLocation(location) { places, error in
-            print(places?.last)
+            print(places?.last ?? "oops")
         }
-        if let coordinate = locations.last?.coordinate {
-            mapView.animate(toLocation: coordinate)
-            addMarker(with: coordinate)
-        }
+        routePath?.add(location.coordinate)
+        route?.path = routePath
+        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+        mapView.animate(to: position)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
