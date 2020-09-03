@@ -103,6 +103,7 @@
 				B6C3607624FFA81F00E31503 /* Frameworks */,
 				B6C3607724FFA81F00E31503 /* Resources */,
 				190EA06C2A72B5B55BFF1137 /* [CP] Copy Pods Resources */,
+				ED7D47956A6DE3AE01F7BD78 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,6 +198,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED7D47956A6DE3AE01F7BD78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
