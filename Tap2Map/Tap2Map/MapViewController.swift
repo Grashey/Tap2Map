@@ -21,7 +21,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
     var isTracking = false
-    var lastTrack = [[CLLocationDegrees]]()
+    var lastTrack = [Coordinate]()
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var trackingButton: UIBarButtonItem!
@@ -46,6 +46,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         locationManager?.requestAlwaysAuthorization()
     }
     
+    //MARK: Start/Stop Tracking
     @IBAction func updateLocation(_ sender: UIBarButtonItem) {
         if !isTracking {
             startTracking()
@@ -54,6 +55,40 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
+    func startTracking() {
+        lastTrack.removeAll()
+        route?.map = nil
+        route = GMSPolyline()
+        route?.strokeColor = .black
+        route?.strokeWidth = 3
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        locationManager?.startMonitoringSignificantLocationChanges()
+        locationManager?.startUpdatingLocation()
+        trackingButton.title = "Stop Tracking"
+        isTracking = true
+    }
+    
+    func stopTracking() {
+        locationManager?.stopUpdatingLocation()
+        locationManager?.stopMonitoringSignificantLocationChanges()
+        if trackingButton.title == "Stop Tracking" {
+            trackingButton.title = "Start Tracking"
+        }
+        isTracking = false
+        
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.deleteAll()
+            realm.add(lastTrack)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
+    
+    //MARK: Show The Last Path
     @IBAction func getLastPath(_ sender: UIBarButtonItem) {
         if !lastTrack.isEmpty {
             if !isTracking {
@@ -68,32 +103,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    func startTracking() {
-        route?.map = nil
-        route = GMSPolyline()
-        route?.strokeColor = .black
-        route?.strokeWidth = 3
-        routePath = GMSMutablePath()
-        route?.map = mapView
-        locationManager?.startMonitoringSignificantLocationChanges()
-        locationManager?.startUpdatingLocation()
-        trackingButton.title = "Stop Tracking"
-        isTracking = true
-        lastTrack.removeAll()
-    }
-    
-    func stopTracking() {
-        locationManager?.stopUpdatingLocation()
-        locationManager?.stopMonitoringSignificantLocationChanges()
-        if trackingButton.title == "Stop Tracking" {
-            trackingButton.title = "Start Tracking"
-        }
-        isTracking = false
-    }
-    
     func isTrackingAlert() {
         let alert = UIAlertController(title: "Tracking is active", message: "Please stop tracking to show the last track.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Stop", style: .default, handler: { action in
             self.stopTracking()
             self.showLastTrack()
         }))
@@ -102,11 +114,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func showLastTrack() {
-        let startPoint = CLLocationCoordinate2D(latitude: (lastTrack.first?.first)!, longitude: (lastTrack.first?.last)!)
-        let finishPoint = CLLocationCoordinate2D(latitude: (lastTrack.last?.first)!, longitude: (lastTrack.last?.last)!)
-        let bounds = GMSCoordinateBounds(coordinate: startPoint, coordinate: finishPoint)
-        let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())
-        mapView.camera = camera!
+        do {
+            let realm = try Realm()
+            let lastPath = realm.objects(Coordinate.self).map { $0.self }
+            let mutablePath = GMSMutablePath()
+            for coordinate in lastPath {
+                mutablePath.addLatitude(coordinate.latitude, longitude: coordinate.longitude)
+            }
+            let route = GMSPolyline()
+            route.path = mutablePath
+            let bounds = GMSCoordinateBounds(path: route.path!)
+            let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())
+            mapView.camera = camera!
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -116,7 +138,13 @@ extension MapViewController: CLLocationManagerDelegate {
 //        geocoder.reverseGeocodeLocation(location) { places, error in
 //            print(places?.last ?? "oops")
 //        }
-        lastTrack.append([location.coordinate.latitude, location.coordinate.longitude])
+        
+        let coordinate = Coordinate()
+        coordinate.latitude = location.coordinate.latitude
+        coordinate.longitude = location.coordinate.longitude
+        coordinate.id = "\(lastTrack.count)"
+        lastTrack.append(coordinate)
+        
         routePath?.add(location.coordinate)
         route?.path = routePath
         let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)

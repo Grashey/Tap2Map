@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B603835225014901005BE105 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603835125014901005BE105 /* RealmService.swift */; };
+		B60383542502995D005BE105 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383532502995D005BE105 /* Coordinate.swift */; };
 		B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607C24FFA81F00E31503 /* AppDelegate.swift */; };
 		B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */; };
 		B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3608024FFA81F00E31503 /* MapViewController.swift */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		5A5AFFB397A959010710876F /* Pods_Tap2Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap2Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B603835125014901005BE105 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		B60383532502995D005BE105 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		B6C3607924FFA81F00E31503 /* Tap2Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tap2Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607C24FFA81F00E31503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 				B6C3607C24FFA81F00E31503 /* AppDelegate.swift */,
 				B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */,
 				B6C3608024FFA81F00E31503 /* MapViewController.swift */,
-				B603835125014901005BE105 /* RealmService.swift */,
+				B60383532502995D005BE105 /* Coordinate.swift */,
 				B6C3608224FFA81F00E31503 /* Main.storyboard */,
 				B6C3608524FFA82000E31503 /* Assets.xcassets */,
 				B6C3608724FFA82000E31503 /* LaunchScreen.storyboard */,
@@ -230,7 +230,7 @@
 				B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */,
 				B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */,
 				B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */,
-				B603835225014901005BE105 /* RealmService.swift in Sources */,
+				B60383542502995D005BE105 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
