@@ -35,14 +35,15 @@
                                 <action selector="updateLocation:" destination="BYZ-38-t0r" id="EhJ-V6-HW8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Current Location" id="WuJ-TX-GbF">
+                        <barButtonItem key="rightBarButtonItem" title="Get Last Track" id="WuJ-TX-GbF">
                             <connections>
-                                <action selector="currentLocation:" destination="BYZ-38-t0r" id="58J-wA-xFk"/>
+                                <action selector="getLastPath:" destination="BYZ-38-t0r" id="hTw-Ea-yxu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="A9N-Ht-uNd" id="6w7-L3-6HH"/>
+                        <outlet property="trackingButton" destination="cxO-zW-u8c" id="3wB-l5-TnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

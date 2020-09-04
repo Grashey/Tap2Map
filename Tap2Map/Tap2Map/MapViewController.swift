@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
-import Realm
+import RealmSwift
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
@@ -21,9 +21,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
     var isTracking = false
+    var lastTrack = [[CLLocationDegrees]]()
     
     @IBOutlet weak var mapView: GMSMapView!
-
+    @IBOutlet weak var trackingButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -46,43 +48,75 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     @IBAction func updateLocation(_ sender: UIBarButtonItem) {
         if !isTracking {
-            startTracking(sender: sender)
-            locationManager?.startMonitoringSignificantLocationChanges()
+            startTracking()
         } else {
-            stopTracking(sender: sender)
-            locationManager?.stopMonitoringSignificantLocationChanges()
+            stopTracking()
         }
-        
     }
     
-    @IBAction func currentLocation(_ sender: UIBarButtonItem) {
-        locationManager?.requestLocation()
+    @IBAction func getLastPath(_ sender: UIBarButtonItem) {
+        if !lastTrack.isEmpty {
+            if !isTracking {
+                showLastTrack()
+            } else {
+                isTrackingAlert()
+            }
+        } else {
+            let alert = UIAlertController(title: "", message: "TrackPath is Empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        }
     }
     
-    func startTracking(sender: UIBarButtonItem) {
+    func startTracking() {
         route?.map = nil
         route = GMSPolyline()
+        route?.strokeColor = .black
+        route?.strokeWidth = 3
         routePath = GMSMutablePath()
         route?.map = mapView
+        locationManager?.startMonitoringSignificantLocationChanges()
         locationManager?.startUpdatingLocation()
-        sender.title = "Stop Tracking"
+        trackingButton.title = "Stop Tracking"
         isTracking = true
+        lastTrack.removeAll()
     }
     
-    func stopTracking(sender: UIBarButtonItem) {
+    func stopTracking() {
         locationManager?.stopUpdatingLocation()
-        sender.title = "Start Tracking"
+        locationManager?.stopMonitoringSignificantLocationChanges()
+        if trackingButton.title == "Stop Tracking" {
+            trackingButton.title = "Start Tracking"
+        }
         isTracking = false
     }
     
+    func isTrackingAlert() {
+        let alert = UIAlertController(title: "Tracking is active", message: "Please stop tracking to show the last track.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.stopTracking()
+            self.showLastTrack()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
+    func showLastTrack() {
+        let startPoint = CLLocationCoordinate2D(latitude: (lastTrack.first?.first)!, longitude: (lastTrack.first?.last)!)
+        let finishPoint = CLLocationCoordinate2D(latitude: (lastTrack.last?.first)!, longitude: (lastTrack.last?.last)!)
+        let bounds = GMSCoordinateBounds(coordinate: startPoint, coordinate: finishPoint)
+        let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())
+        mapView.camera = camera!
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        geocoder.reverseGeocodeLocation(location) { places, error in
-            print(places?.last ?? "oops")
-        }
+//        geocoder.reverseGeocodeLocation(location) { places, error in
+//            print(places?.last ?? "oops")
+//        }
+        lastTrack.append([location.coordinate.latitude, location.coordinate.longitude])
         routePath?.add(location.coordinate)
         route?.path = routePath
         let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
