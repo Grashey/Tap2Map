@@ -12,7 +12,7 @@ import CoreLocation
 import RealmSwift
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
-    
+
     //Moscow center
     let mskCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
@@ -22,15 +22,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var routePath: GMSMutablePath?
     var isTracking = false
     var lastTrack = [Coordinate]()
-    
+   
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var trackingButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mapView.delegate = self
         configureMap(with: mskCoordinate)
         configureLocationManager()
+        configureNavigationBar()
     }
 
     func configureMap(with coordinate: CLLocationCoordinate2D) {
@@ -47,7 +48,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     //MARK: Start/Stop Tracking
-    @IBAction func updateLocation(_ sender: UIBarButtonItem) {
+    @objc func updateLocation() {
         if !isTracking {
             startTracking()
         } else {
@@ -89,7 +90,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     //MARK: Show The Last Path
-    @IBAction func getLastPath(_ sender: UIBarButtonItem) {
+    @objc func getLastPath() {
         if !lastTrack.isEmpty {
             if !isTracking {
                 showLastTrack()
@@ -130,6 +131,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             print(error)
         }
     }
+    //MARK: Navigation Bar & Items
+    var trackingButton = UIBarButtonItem(title: "Start Tracking", style: .plain, target: self, action: #selector(updateLocation))
+       
+    func configureNavigationBar() {
+        let item = UINavigationItem()
+        item.leftBarButtonItem = trackingButton
+        item.rightBarButtonItem = UIBarButtonItem(title: "Get Last Track", style: .plain, target: self, action: #selector(getLastPath))
+        
+        // точки по вертикали взять из системы
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: 45))
+        navBar.isTranslucent = false
+        navBar.backgroundColor = .white
+        navBar.items = [item]
+        self.view.addSubview(navBar)
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -155,4 +171,3 @@ extension MapViewController: CLLocationManagerDelegate {
         print(error)
     }
 }
-
