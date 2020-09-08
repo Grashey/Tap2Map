@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RegistrationViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var onLogin: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,45 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
+        let user = User()
+        if let login = loginTextField.text, let password = passwordTextField.text {
+            user.login = login
+            user.password = password
+        }
+        do {
+            let realm = try Realm()
+            let object = realm.objects(User.self).filter("login == [cd] %@", user.login).first
+            if user.login == object?.login {
+                realm.beginWrite()
+                realm.add(user, update: .modified)
+                try realm.commitWrite()
+                existedUserAlert(name: user.login, new: false)
+            } else {
+                realm.beginWrite()
+                realm.add(user)
+                try realm.commitWrite()
+                existedUserAlert(name: user.login, new: true)
+                
+                 let configuration: Realm.Configuration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+                print(configuration.fileURL ?? "")
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func existedUserAlert(name: String, new: Bool) {
+        var alert = UIAlertController()
+        if new {
+            alert = UIAlertController(title: "Registration succesfull", message: "User named \(name) is registered", preferredStyle: .alert)
+        } else {
+            alert = UIAlertController(title: "User \(name) already exists", message: "User password updated", preferredStyle: .alert)
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            UserDefaults.standard.set(true, forKey: "isLogin")
+            self.onLogin?()
+        }))
+        self.present(alert, animated: true)
     }
     
     @objc private func hideKeyboard(){
