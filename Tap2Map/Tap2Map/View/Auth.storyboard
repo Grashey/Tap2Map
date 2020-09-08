@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="DaH-zU-If8">
             <objects>
-                <viewController id="AKM-hS-DAN" customClass="LoginViewController" customModule="Tap2Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="AKM-hS-DAN" customClass="LoginViewController" customModule="Tap2Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ify-OU-zqx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
         <!--Registration View Controller-->
         <scene sceneID="OW7-Hg-KOP">
             <objects>
-                <viewController id="TJH-YI-3SD" customClass="RegistrationViewController" customModule="Tap2Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationViewController" id="TJH-YI-3SD" customClass="RegistrationViewController" customModule="Tap2Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I8C-k9-yu3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -140,7 +140,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         item.rightBarButtonItem = UIBarButtonItem(title: "Get Last Track", style: .plain, target: self, action: #selector(getLastPath))
         
         // точки по вертикали взять из системы
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: 45))
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: self.view.safeAreaInsets.top, width: UIScreen.main.bounds.width, height: 45))
         navBar.isTranslucent = false
         navBar.backgroundColor = .white
         navBar.items = [item]

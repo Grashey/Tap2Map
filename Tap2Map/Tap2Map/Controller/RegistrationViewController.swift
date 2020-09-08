@@ -15,9 +15,16 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGR.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tapGR)
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
     }
+    
+    @objc private func hideKeyboard(){
+           view.endEditing(true)
+       }
 }
