@@ -35,5 +35,14 @@ class AuthCoordinator: BaseCoordinator {
     private func showRecoverModule() {
         let controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: RegistrationViewController.reuseID) as RegistrationViewController
         rootController?.pushViewController(controller, animated: true)
+        
+        let coordinator = RegistryCoordinator()
+        coordinator.onFinishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+            self?.start()
+        }
+        
+        addDependency(coordinator)
+        coordinator.start()
     }
 }
