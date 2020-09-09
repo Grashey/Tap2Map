@@ -66,15 +66,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         route?.map = mapView
         locationManager?.startMonitoringSignificantLocationChanges()
         locationManager?.startUpdatingLocation()
-        trackingButton.title = "Stop Tracking"
+        let item = self.navigationItem.rightBarButtonItems?.last // trackingButton
+        item?.title = "Stop Tracking"
         isTracking = true
     }
     
     func stopTracking() {
         locationManager?.stopUpdatingLocation()
         locationManager?.stopMonitoringSignificantLocationChanges()
-        if trackingButton.title == "Stop Tracking" {
-            trackingButton.title = "Start Tracking"
+        let item = self.navigationItem.rightBarButtonItems?.last // trackingButton
+        if item?.title == "Stop Tracking" {
+            item?.title = "Start Tracking"
         }
         isTracking = false
         
@@ -132,19 +134,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     //MARK: Navigation Bar & Items
-    var trackingButton = UIBarButtonItem(title: "Start Tracking", style: .plain, target: self, action: #selector(updateLocation))
-       
     func configureNavigationBar() {
-        let item = UINavigationItem()
-        item.leftBarButtonItem = trackingButton
-        item.rightBarButtonItem = UIBarButtonItem(title: "Get Last Track", style: .plain, target: self, action: #selector(getLastPath))
+        let lastTrackButton = UIBarButtonItem(title: "Get Last Track", style: .plain, target: self, action: #selector(getLastPath))
         
-        // точки по вертикали взять из системы
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: self.view.safeAreaInsets.top, width: UIScreen.main.bounds.width, height: 45))
-        navBar.isTranslucent = false
-        navBar.backgroundColor = .white
-        navBar.items = [item]
-        self.view.addSubview(navBar)
+        //кнопка не работает если ее вынести за пределы метода. (это нужно для переопределения титула) Почему не работает??
+        let trackingButton = UIBarButtonItem(title: "Start Tracking", style: .plain, target: self, action: #selector(updateLocation))
+        self.navigationItem.rightBarButtonItems = [lastTrackButton, trackingButton]
     }
 }
 

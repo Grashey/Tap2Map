@@ -15,9 +15,11 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var onLogin: (() -> Void)?
+    var onMain: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGR.numberOfTapsRequired = 1
@@ -61,9 +63,18 @@ class RegistrationViewController: UIViewController {
         }
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             UserDefaults.standard.set(true, forKey: "isLogin")
-            self.onLogin?()
+            self.onMain?()
         }))
         self.present(alert, animated: true)
+    }
+    
+    func configureNavigationBar() {
+        let backButton = UIBarButtonItem(title: "< Back", style: .done, target: self, action: #selector(goBack))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func goBack() {
+        self.onLogin?()
     }
     
     @objc private func hideKeyboard(){
