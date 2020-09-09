@@ -24,7 +24,7 @@ class MainCoordinator: BaseCoordinator {
         }
         
         controller.onLogout = { [weak self] in
-            self?.onFinishFlow?()
+            self?.toAuth()
         }
         
         let rootController = UINavigationController(rootViewController: controller)
@@ -35,5 +35,16 @@ class MainCoordinator: BaseCoordinator {
     private func showMapModule() {
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: MapViewController.reuseID) as MapViewController
         rootController?.pushViewController(controller, animated: true)
+    }
+    
+    private func toAuth() {
+        let coordinator = AuthCoordinator()
+        coordinator.onFinishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+            self?.start()
+        }
+        
+        addDependency(coordinator)
+        coordinator.start()
     }
 }
