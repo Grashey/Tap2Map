@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.isSecureTextEntry = true
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGR.numberOfTapsRequired = 1

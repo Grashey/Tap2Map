@@ -19,6 +19,7 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.isSecureTextEntry = true
         configureNavigationBar()
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

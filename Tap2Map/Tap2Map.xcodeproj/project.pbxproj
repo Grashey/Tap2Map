@@ -104,7 +104,7 @@
 		B603836D2507B3D2005BE105 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B603836E2507B3F9005BE105 /* Helper */,
+				B603836E2507B3F9005BE105 /* Extension */,
 				B6C3608024FFA81F00E31503 /* MapViewController.swift */,
 				B603835F2506B066005BE105 /* MainViewController.swift */,
 				B60383632506B298005BE105 /* LoginViewController.swift */,
@@ -113,12 +113,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B603836E2507B3F9005BE105 /* Helper */ = {
+		B603836E2507B3F9005BE105 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B60383692507AD47005BE105 /* UIViewController + ext.swift */,
 			);
-			path = Helper;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B62CC86A2507C7A700EF7BF6 /* Coordinator */ = {
