@@ -8,5 +8,6 @@ target 'Tap2Map' do
   # Pods for Tap2Map
   pod 'GoogleMaps', '~> 3.10.0'
   pod 'RealmSwift', '~> 5.1.0'
+  pod 'RxSwift'
 
 end
