@@ -8,11 +8,14 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     var onLogin: (() -> Void)?
     var onRecover: (() -> Void)?
@@ -24,6 +27,16 @@ class LoginViewController: UIViewController {
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGR.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapGR)
+        
+        configureLoginBindings()
+    }
+    
+    func configureLoginBindings() {
+        Observable.combineLatest(loginTextField.rx.text, passwordTextField.rx.text).map { login, password in
+            return !(login ?? "").isEmpty && !(password ?? "").isEmpty
+        }.bind { [weak loginButton] inputFilled in
+            loginButton?.isEnabled = inputFilled
+        }
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

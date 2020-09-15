@@ -16,7 +16,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     //Moscow center
     let mskCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
-    var locationManager: CLLocationManager?
+    var locationManager = LocationManager.instance
     let geocoder = CLGeocoder()
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
@@ -28,7 +28,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.delegate = self
         configureMap(with: mskCoordinate)
         configureLocationManager()
         configureNavigationBar()
@@ -40,11 +39,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func configureLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.requestAlwaysAuthorization()
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                self?.route?.path = self?.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.animate(to: position)
+        }
     }
     
     //MARK: Start/Stop Tracking
@@ -64,16 +67,29 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         route?.strokeWidth = 3
         routePath = GMSMutablePath()
         route?.map = mapView
-        locationManager?.startMonitoringSignificantLocationChanges()
-        locationManager?.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
+        
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                let coordinate = Coordinate()
+                coordinate.latitude = location.coordinate.latitude
+                coordinate.longitude = location.coordinate.longitude
+                coordinate.id = "\(self?.lastTrack.count ?? 0)"
+                self?.lastTrack.append(coordinate)
+                self?.routePath?.add(location.coordinate)
+                self?.route?.path = self?.routePath
+        }
+        
         let item = self.navigationItem.rightBarButtonItems?.last // trackingButton
         item?.title = "Stop Tracking"
         isTracking = true
     }
     
     func stopTracking() {
-        locationManager?.stopUpdatingLocation()
-        locationManager?.stopMonitoringSignificantLocationChanges()
+        locationManager.stopUpdatingLocation()
         let item = self.navigationItem.rightBarButtonItems?.last // trackingButton
         if item?.title == "Stop Tracking" {
             item?.title = "Start Tracking"
@@ -140,29 +156,5 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         //кнопка не работает если ее вынести за пределы метода. (это нужно для переопределения титула) Почему не работает??
         let trackingButton = UIBarButtonItem(title: "Start Tracking", style: .plain, target: self, action: #selector(updateLocation))
         self.navigationItem.rightBarButtonItems = [lastTrackButton, trackingButton]
-    }
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-//        geocoder.reverseGeocodeLocation(location) { places, error in
-//            print(places?.last ?? "oops")
-//        }
-        
-        let coordinate = Coordinate()
-        coordinate.latitude = location.coordinate.latitude
-        coordinate.longitude = location.coordinate.longitude
-        coordinate.id = "\(lastTrack.count)"
-        lastTrack.append(coordinate)
-        
-        routePath?.add(location.coordinate)
-        route?.path = routePath
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
-        mapView.animate(to: position)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }
