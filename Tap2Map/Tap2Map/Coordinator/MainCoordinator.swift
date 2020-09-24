@@ -27,6 +27,10 @@ class MainCoordinator: BaseCoordinator {
             self?.toAuth()
         }
         
+        controller.onTakePicture = { [weak self] image in
+            self?.showSelfieModule(image: image)
+        }
+        
         let rootController = UINavigationController(rootViewController: controller)
         setAsRoot(rootController)
         self.rootController = rootController
@@ -46,5 +50,11 @@ class MainCoordinator: BaseCoordinator {
         
         addDependency(coordinator)
         coordinator.start()
+    }
+    
+    private func showSelfieModule(image: UIImage) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: SelfieViewController.reuseID) as SelfieViewController
+        controller.image = image
+        rootController?.pushViewController(controller, animated: true)
     }
 }
