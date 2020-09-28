@@ -17,6 +17,7 @@
 		B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603836F2507B43E005BE105 /* BaseCoordinator.swift */; };
 		B60383722507B78F005BE105 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383712507B78F005BE105 /* ApplicationCoordinator.swift */; };
 		B60383742507B955005BE105 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383732507B955005BE105 /* MainCoordinator.swift */; };
+		B60E1650251E114D00D7F8DD /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60E164F251E114D00D7F8DD /* AvatarView.swift */; };
 		B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */; };
 		B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */; };
 		B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667EEA42519F63C00BBBA65 /* NotificationService.swift */; };
@@ -43,6 +44,7 @@
 		B603836F2507B43E005BE105 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B60383712507B78F005BE105 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B60383732507B955005BE105 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B60E164F251E114D00D7F8DD /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryCoordinator.swift; sourceTree = "<group>"; };
 		B667EEA42519F63C00BBBA65 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C3608224FFA81F00E31503 /* Main.storyboard */,
+				B60E164F251E114D00D7F8DD /* AvatarView.swift */,
 				B60383612506B0EA005BE105 /* Auth.storyboard */,
 			);
 			path = View;
@@ -337,6 +340,7 @@
 				B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */,
 				B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */,
 				B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */,
+				B60E1650251E114D00D7F8DD /* AvatarView.swift in Sources */,
 				B60383682507AA69005BE105 /* User.swift in Sources */,
 				B60383662506B330005BE105 /* RegistrationViewController.swift in Sources */,
 				B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */,

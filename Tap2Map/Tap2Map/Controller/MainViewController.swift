@@ -13,10 +13,16 @@ class MainViewController: UIViewController {
     var onMap: (() -> Void)?
     var onLogout: (() -> Void)?
     var onTakePicture: ((UIImage) -> Void)?
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        nameLabel.text = UserDefaults.standard.value(forKey: "userName") as? String
+        if let savedPhoto = try? Data(contentsOf: makeUrl()) {
+            avatarView.image = UIImage(data: savedPhoto)
+        }
     }
     
     @IBAction func showMapPressed(_ sender: UIButton) {
@@ -48,6 +54,9 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
         picker.dismiss(animated: true) { [weak self] in
             guard let image = self?.extractImage(from: info) else { return }
             self?.onTakePicture?(image)
+            self?.avatarView.image = image
+            let imageData = image.jpegData(compressionQuality: 1)
+            try? imageData?.write(to: (self?.makeUrl())!)
         }
     }
     
@@ -59,5 +68,13 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
         } else {
             return nil
         }
+    }
+    
+    private func makeUrl() -> URL {
+        var documentDirectoryURL: URL {
+            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        }
+        let dataURL = documentDirectoryURL.appendingPathComponent(UserDefaults.standard.value(forKey: "userName") as! String).appendingPathExtension("jpeg")
+        return dataURL
     }
 }

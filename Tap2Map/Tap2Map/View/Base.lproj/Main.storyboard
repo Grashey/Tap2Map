@@ -41,24 +41,59 @@
                                     <action selector="takePicture:" destination="zYj-cM-fsx" eventType="touchUpInside" id="Zeg-X8-Stc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2x-uA-Bbj">
+                                <rect key="frame" x="292" y="73.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8n-CI-Itl" customClass="AvatarView" customModule="Tap2Map" customModuleProvider="target">
+                                <rect key="frame" x="354" y="64" width="40" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="POh-eN-vEf">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="POh-eN-vEf" firstAttribute="leading" secondItem="u8n-CI-Itl" secondAttribute="leading" id="OmI-SN-ZRt"/>
+                                    <constraint firstAttribute="bottom" secondItem="POh-eN-vEf" secondAttribute="bottom" id="ZBj-Q3-8jc"/>
+                                    <constraint firstItem="POh-eN-vEf" firstAttribute="top" secondItem="u8n-CI-Itl" secondAttribute="top" id="aAx-o5-dLb"/>
+                                    <constraint firstAttribute="trailing" secondItem="POh-eN-vEf" secondAttribute="trailing" id="mTr-nG-arX"/>
+                                    <constraint firstAttribute="height" constant="40" id="neC-ME-QG9"/>
+                                    <constraint firstAttribute="width" secondItem="u8n-CI-Itl" secondAttribute="height" multiplier="1:1" id="sf8-e4-mNL"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="POh-eN-vEf" id="606-z3-4sQ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3JV-Zp-lbD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ye1-AY-eoD" firstAttribute="top" secondItem="qN8-U4-pZL" secondAttribute="bottom" constant="40" id="3Ry-UO-EA5"/>
                             <constraint firstItem="qN8-U4-pZL" firstAttribute="centerX" secondItem="3JV-Zp-lbD" secondAttribute="centerX" id="OKV-1H-Ikl"/>
+                            <constraint firstItem="n2x-uA-Bbj" firstAttribute="leading" relation="lessThanOrEqual" secondItem="3JV-Zp-lbD" secondAttribute="leading" constant="292" id="Ocf-BZ-IyE"/>
                             <constraint firstItem="eff-lS-QEJ" firstAttribute="centerX" secondItem="3JV-Zp-lbD" secondAttribute="centerX" id="Pfy-dj-UnE"/>
                             <constraint firstItem="eff-lS-QEJ" firstAttribute="top" secondItem="ye1-AY-eoD" secondAttribute="bottom" constant="40" id="QWh-e6-Ds7"/>
                             <constraint firstItem="ye1-AY-eoD" firstAttribute="centerX" secondItem="3JV-Zp-lbD" secondAttribute="centerX" id="QwG-Ys-13B"/>
+                            <constraint firstItem="3JV-Zp-lbD" firstAttribute="trailing" secondItem="u8n-CI-Itl" secondAttribute="trailing" constant="20" id="R9b-46-6R2"/>
+                            <constraint firstItem="n2x-uA-Bbj" firstAttribute="centerY" secondItem="u8n-CI-Itl" secondAttribute="centerY" id="SNq-f7-bQ9"/>
                             <constraint firstItem="ye1-AY-eoD" firstAttribute="leading" secondItem="qN8-U4-pZL" secondAttribute="leading" id="SyT-jN-Z8V"/>
                             <constraint firstItem="qN8-U4-pZL" firstAttribute="top" secondItem="3JV-Zp-lbD" secondAttribute="top" constant="209" id="WTa-Ki-DWY"/>
                             <constraint firstItem="eff-lS-QEJ" firstAttribute="width" secondItem="qN8-U4-pZL" secondAttribute="width" id="sko-Wp-jdB"/>
+                            <constraint firstItem="u8n-CI-Itl" firstAttribute="top" secondItem="3JV-Zp-lbD" secondAttribute="top" constant="20" id="xB7-vs-SjM"/>
+                            <constraint firstItem="u8n-CI-Itl" firstAttribute="leading" secondItem="n2x-uA-Bbj" secondAttribute="trailing" constant="20" id="zna-gd-wlF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="avatarView" destination="POh-eN-vEf" id="8Oi-Tf-ohF"/>
+                        <outlet property="nameLabel" destination="n2x-uA-Bbj" id="mMB-te-EtX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01g-9x-Ap8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="100"/>
+            <point key="canvasLocation" x="189.85507246376812" y="99.776785714285708"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
