@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60383542502995D005BE105 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383532502995D005BE105 /* Coordinate.swift */; };
+		B60383602506B066005BE105 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603835F2506B066005BE105 /* MainViewController.swift */; };
+		B60383622506B0EA005BE105 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B60383612506B0EA005BE105 /* Auth.storyboard */; };
+		B60383642506B298005BE105 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383632506B298005BE105 /* LoginViewController.swift */; };
+		B60383662506B330005BE105 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383652506B330005BE105 /* RegistrationViewController.swift */; };
+		B60383682507AA69005BE105 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383672507AA69005BE105 /* User.swift */; };
+		B603836A2507AD47005BE105 /* UIViewController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383692507AD47005BE105 /* UIViewController + ext.swift */; };
+		B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603836F2507B43E005BE105 /* BaseCoordinator.swift */; };
+		B60383722507B78F005BE105 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383712507B78F005BE105 /* ApplicationCoordinator.swift */; };
+		B60383742507B955005BE105 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383732507B955005BE105 /* MainCoordinator.swift */; };
+		B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */; };
+		B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */; };
+		B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667EEA42519F63C00BBBA65 /* NotificationService.swift */; };
+		B66AD2C725101817004A8377 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66AD2C625101817004A8377 /* LocationManager.swift */; };
 		B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607C24FFA81F00E31503 /* AppDelegate.swift */; };
 		B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */; };
 		B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3608024FFA81F00E31503 /* MapViewController.swift */; };
@@ -18,6 +32,20 @@
 
 /* Begin PBXFileReference section */
 		5A5AFFB397A959010710876F /* Pods_Tap2Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap2Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60383532502995D005BE105 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		B603835F2506B066005BE105 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B60383612506B0EA005BE105 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		B60383632506B298005BE105 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B60383652506B330005BE105 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		B60383672507AA69005BE105 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B60383692507AD47005BE105 /* UIViewController + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + ext.swift"; sourceTree = "<group>"; };
+		B603836F2507B43E005BE105 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		B60383712507B78F005BE105 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		B60383732507B955005BE105 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryCoordinator.swift; sourceTree = "<group>"; };
+		B667EEA42519F63C00BBBA65 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		B66AD2C625101817004A8377 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B6C3607924FFA81F00E31503 /* Tap2Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tap2Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607C24FFA81F00E31503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +87,72 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B603836B2507B39D005BE105 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B60383532502995D005BE105 /* Coordinate.swift */,
+				B60383672507AA69005BE105 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B603836C2507B3BF005BE105 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6C3608224FFA81F00E31503 /* Main.storyboard */,
+				B60383612506B0EA005BE105 /* Auth.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B603836D2507B3D2005BE105 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B603836E2507B3F9005BE105 /* Extension */,
+				B6C3608024FFA81F00E31503 /* MapViewController.swift */,
+				B603835F2506B066005BE105 /* MainViewController.swift */,
+				B60383632506B298005BE105 /* LoginViewController.swift */,
+				B60383652506B330005BE105 /* RegistrationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B603836E2507B3F9005BE105 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B60383692507AD47005BE105 /* UIViewController + ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B62CC86A2507C7A700EF7BF6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B603836F2507B43E005BE105 /* BaseCoordinator.swift */,
+				B60383712507B78F005BE105 /* ApplicationCoordinator.swift */,
+				B60383732507B955005BE105 /* MainCoordinator.swift */,
+				B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */,
+				B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B667EEA6251A03EF00BBBA65 /* Notification Service */ = {
+			isa = PBXGroup;
+			children = (
+				B667EEA42519F63C00BBBA65 /* NotificationService.swift */,
+			);
+			path = "Notification Service";
+			sourceTree = "<group>";
+		};
+		B66AD2C82510DD1D004A8377 /* Location Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B66AD2C625101817004A8377 /* LocationManager.swift */,
+			);
+			path = "Location Manager";
+			sourceTree = "<group>";
+		};
 		B6C3607024FFA81F00E31503 = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +176,12 @@
 			children = (
 				B6C3607C24FFA81F00E31503 /* AppDelegate.swift */,
 				B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */,
-				B6C3608024FFA81F00E31503 /* MapViewController.swift */,
-				B6C3608224FFA81F00E31503 /* Main.storyboard */,
+				B667EEA6251A03EF00BBBA65 /* Notification Service */,
+				B66AD2C82510DD1D004A8377 /* Location Manager */,
+				B62CC86A2507C7A700EF7BF6 /* Coordinator */,
+				B603836D2507B3D2005BE105 /* Controller */,
+				B603836B2507B39D005BE105 /* Model */,
+				B603836C2507B3BF005BE105 /* View */,
 				B6C3608524FFA82000E31503 /* Assets.xcassets */,
 				B6C3608724FFA82000E31503 /* LaunchScreen.storyboard */,
 				B6C3608A24FFA82000E31503 /* Info.plist */,
@@ -103,6 +201,7 @@
 				B6C3607624FFA81F00E31503 /* Frameworks */,
 				B6C3607724FFA81F00E31503 /* Resources */,
 				190EA06C2A72B5B55BFF1137 /* [CP] Copy Pods Resources */,
+				ED7D47956A6DE3AE01F7BD78 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60383622506B0EA005BE105 /* Auth.storyboard in Resources */,
 				B6C3608924FFA82000E31503 /* LaunchScreen.storyboard in Resources */,
 				B6C3608624FFA82000E31503 /* Assets.xcassets in Resources */,
 				B6C3608424FFA81F00E31503 /* Main.storyboard in Resources */,
@@ -199,6 +299,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ED7D47956A6DE3AE01F7BD78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap2Map/Pods-Tap2Map-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -206,9 +323,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60383642506B298005BE105 /* LoginViewController.swift in Sources */,
+				B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */,
+				B66AD2C725101817004A8377 /* LocationManager.swift in Sources */,
+				B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */,
+				B60383742507B955005BE105 /* MainCoordinator.swift in Sources */,
+				B603836A2507AD47005BE105 /* UIViewController + ext.swift in Sources */,
 				B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */,
 				B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */,
 				B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */,
+				B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */,
+				B60383682507AA69005BE105 /* User.swift in Sources */,
+				B60383662506B330005BE105 /* RegistrationViewController.swift in Sources */,
+				B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */,
+				B60383542502995D005BE105 /* Coordinate.swift in Sources */,
+				B60383602506B066005BE105 /* MainViewController.swift in Sources */,
+				B60383722507B78F005BE105 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

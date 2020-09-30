@@ -6,6 +6,9 @@ target 'Tap2Map' do
   use_frameworks!
 
   # Pods for Tap2Map
-  pod 'GoogleMaps'
+  pod 'GoogleMaps', '~> 3.10.0'
+  pod 'RealmSwift', '~> 5.1.0'
+  pod 'RxSwift', '~>5.1.1'
+  pod 'RxCocoa', '~>5.1.1'
 
 end
