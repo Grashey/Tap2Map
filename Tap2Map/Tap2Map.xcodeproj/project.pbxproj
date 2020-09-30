@@ -19,6 +19,7 @@
 		B60383742507B955005BE105 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383732507B955005BE105 /* MainCoordinator.swift */; };
 		B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */; };
 		B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */; };
+		B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667EEA42519F63C00BBBA65 /* NotificationService.swift */; };
 		B66AD2C725101817004A8377 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66AD2C625101817004A8377 /* LocationManager.swift */; };
 		B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607C24FFA81F00E31503 /* AppDelegate.swift */; };
 		B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */; };
@@ -43,6 +44,7 @@
 		B60383732507B955005BE105 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryCoordinator.swift; sourceTree = "<group>"; };
+		B667EEA42519F63C00BBBA65 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B66AD2C625101817004A8377 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B6C3607924FFA81F00E31503 /* Tap2Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tap2Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607C24FFA81F00E31503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,22 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		B667EEA6251A03EF00BBBA65 /* Notification Service */ = {
+			isa = PBXGroup;
+			children = (
+				B667EEA42519F63C00BBBA65 /* NotificationService.swift */,
+			);
+			path = "Notification Service";
+			sourceTree = "<group>";
+		};
+		B66AD2C82510DD1D004A8377 /* Location Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B66AD2C625101817004A8377 /* LocationManager.swift */,
+			);
+			path = "Location Manager";
+			sourceTree = "<group>";
+		};
 		B6C3607024FFA81F00E31503 = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +176,8 @@
 			children = (
 				B6C3607C24FFA81F00E31503 /* AppDelegate.swift */,
 				B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */,
-				B66AD2C625101817004A8377 /* LocationManager.swift */,
+				B667EEA6251A03EF00BBBA65 /* Notification Service */,
+				B66AD2C82510DD1D004A8377 /* Location Manager */,
 				B62CC86A2507C7A700EF7BF6 /* Coordinator */,
 				B603836D2507B3D2005BE105 /* Controller */,
 				B603836B2507B39D005BE105 /* Model */,
@@ -316,6 +335,7 @@
 				B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */,
 				B60383682507AA69005BE105 /* User.swift in Sources */,
 				B60383662506B330005BE105 /* RegistrationViewController.swift in Sources */,
+				B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */,
 				B60383542502995D005BE105 /* Coordinate.swift in Sources */,
 				B60383602506B066005BE105 /* MainViewController.swift in Sources */,
 				B60383722507B78F005BE105 /* ApplicationCoordinator.swift in Sources */,
