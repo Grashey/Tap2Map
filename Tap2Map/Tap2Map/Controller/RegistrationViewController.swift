@@ -64,6 +64,7 @@ class RegistrationViewController: UIViewController {
         }
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             UserDefaults.standard.set(true, forKey: "isLogin")
+            UserDefaults.standard.setValue(name, forKey: "userName")
             self.onMain?()
         }))
         self.present(alert, animated: true)

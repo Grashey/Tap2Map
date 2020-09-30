@@ -17,10 +17,12 @@
 		B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603836F2507B43E005BE105 /* BaseCoordinator.swift */; };
 		B60383722507B78F005BE105 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383712507B78F005BE105 /* ApplicationCoordinator.swift */; };
 		B60383742507B955005BE105 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60383732507B955005BE105 /* MainCoordinator.swift */; };
+		B60E1650251E114D00D7F8DD /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60E164F251E114D00D7F8DD /* AvatarView.swift */; };
 		B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */; };
 		B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */; };
 		B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667EEA42519F63C00BBBA65 /* NotificationService.swift */; };
 		B66AD2C725101817004A8377 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66AD2C625101817004A8377 /* LocationManager.swift */; };
+		B6C00E01251D0A830083B457 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C00E00251D0A830083B457 /* SelfieViewController.swift */; };
 		B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607C24FFA81F00E31503 /* AppDelegate.swift */; };
 		B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */; };
 		B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C3608024FFA81F00E31503 /* MapViewController.swift */; };
@@ -42,10 +44,12 @@
 		B603836F2507B43E005BE105 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B60383712507B78F005BE105 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B60383732507B955005BE105 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B60E164F251E114D00D7F8DD /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		B62CC8682507C50700EF7BF6 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B62CC86D2508004300EF7BF6 /* RegistryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryCoordinator.swift; sourceTree = "<group>"; };
 		B667EEA42519F63C00BBBA65 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B66AD2C625101817004A8377 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B6C00E00251D0A830083B457 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		B6C3607924FFA81F00E31503 /* Tap2Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tap2Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3607C24FFA81F00E31503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C3607E24FFA81F00E31503 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C3608224FFA81F00E31503 /* Main.storyboard */,
+				B60E164F251E114D00D7F8DD /* AvatarView.swift */,
 				B60383612506B0EA005BE105 /* Auth.storyboard */,
 			);
 			path = View;
@@ -113,6 +118,7 @@
 				B603835F2506B066005BE105 /* MainViewController.swift */,
 				B60383632506B298005BE105 /* LoginViewController.swift */,
 				B60383652506B330005BE105 /* RegistrationViewController.swift */,
+				B6C00E00251D0A830083B457 /* SelfieViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Aleksandr Fetisov";
 				TargetAttributes = {
 					B6C3607824FFA81F00E31503 = {
@@ -327,12 +333,14 @@
 				B62CC86E2508004300EF7BF6 /* RegistryCoordinator.swift in Sources */,
 				B66AD2C725101817004A8377 /* LocationManager.swift in Sources */,
 				B62CC8692507C50700EF7BF6 /* AuthCoordinator.swift in Sources */,
+				B6C00E01251D0A830083B457 /* SelfieViewController.swift in Sources */,
 				B60383742507B955005BE105 /* MainCoordinator.swift in Sources */,
 				B603836A2507AD47005BE105 /* UIViewController + ext.swift in Sources */,
 				B6C3608124FFA81F00E31503 /* MapViewController.swift in Sources */,
 				B6C3607D24FFA81F00E31503 /* AppDelegate.swift in Sources */,
 				B6C3607F24FFA81F00E31503 /* SceneDelegate.swift in Sources */,
 				B60383702507B43E005BE105 /* BaseCoordinator.swift in Sources */,
+				B60E1650251E114D00D7F8DD /* AvatarView.swift in Sources */,
 				B60383682507AA69005BE105 /* User.swift in Sources */,
 				B60383662506B330005BE105 /* RegistrationViewController.swift in Sources */,
 				B667EEA52519F63C00BBBA65 /* NotificationService.swift in Sources */,
@@ -390,6 +398,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -414,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -450,6 +459,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -468,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

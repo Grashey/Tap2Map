@@ -22,6 +22,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var routePath: GMSMutablePath?
     var isTracking = false
     var lastTrack = [Coordinate]()
+    var marker: GMSMarker?
    
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -81,6 +82,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 self?.lastTrack.append(coordinate)
                 self?.routePath?.add(location.coordinate)
                 self?.route?.path = self?.routePath
+                self?.showMarker(at: location.coordinate)
         }
         
         let item = self.navigationItem.rightBarButtonItems?.last // trackingButton
@@ -152,9 +154,37 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     //MARK: Navigation Bar & Items
     func configureNavigationBar() {
         let lastTrackButton = UIBarButtonItem(title: "Get Last Track", style: .plain, target: self, action: #selector(getLastPath))
-        
-        //кнопка не работает если ее вынести за пределы метода. (это нужно для переопределения титула) Почему не работает??
         let trackingButton = UIBarButtonItem(title: "Start Tracking", style: .plain, target: self, action: #selector(updateLocation))
         self.navigationItem.rightBarButtonItems = [lastTrackButton, trackingButton]
+    }
+    //MARK: Marker Setup
+    private func showMarker(at coordinate: CLLocationCoordinate2D) {
+        self.marker?.map = nil
+        self.marker = nil
+        
+        let marker = GMSMarker(position: coordinate)
+        let rect = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let view = UIView(frame: rect)
+        let imageView = UIImageView()
+        if let savedPhoto = try? Data(contentsOf: makeUrl()) {
+            imageView.image = UIImage(data: savedPhoto)
+        }
+        view.addSubview(imageView)
+        marker.iconView = view
+        imageView.bounds = view.bounds
+        imageView.frame.origin = view.frame.origin
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = view.frame.height/2
+        marker.map = mapView
+        marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+        self.marker = marker
+    }
+    
+    private func makeUrl() -> URL {
+        var documentDirectoryURL: URL {
+            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        }
+        let dataURL = documentDirectoryURL.appendingPathComponent(UserDefaults.standard.value(forKey: "userName") as! String).appendingPathExtension("jpeg")
+        return dataURL
     }
 }
