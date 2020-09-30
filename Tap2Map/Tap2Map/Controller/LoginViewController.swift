@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
                     wrongInputAlert(loginExists: true)
                 } else {
                     UserDefaults.standard.set(true, forKey: "isLogin")
+                    UserDefaults.standard.setValue(user.login, forKey: "userName")
                     onLogin?()
                 }
             } else {
